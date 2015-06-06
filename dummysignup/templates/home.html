@@ -18,7 +18,8 @@
     {% else %}
 
     <p>Hello {{ user.get_full_name|default:user.username }}! <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a></p>
-
+    <form method="POST">
+    {% csrf_token %}
 	<div class="panel panel-primary col-lg-6 no-padding">
   		<div class="panel-heading">
     	<h3 class="panel-title">What do you want in a trip / What do you usually do on trips?</h3>
@@ -30,7 +31,7 @@
 			  		<div class="input-group">
 		      			<div class="checkbox">
 	    					<label>
-	      						<input type="checkbox" id="mountain">
+	      						{{ form.beach }}
 	      						Beach
 	    					</label>
 	  					</div>
@@ -41,7 +42,7 @@
 			  		<div class="input-group">
 		      			<div class="checkbox">
 	    					<label>
-	      						<input type="checkbox" id="mountain">
+	      						{{ form.nature }}
 	      						Nature/Ecoparks
 	    					</label>
 	  					</div>
@@ -52,7 +53,7 @@
 			  		<div class="input-group">
 		      			<div class="checkbox">
 	    					<label>
-	      						<input type="checkbox" id="mountain">
+	      						{{ form.shopping }}
 	      						Shopping
 	    					</label>
 	  					</div>
@@ -65,7 +66,7 @@
 			  		<div class="input-group">
 		      			<div class="checkbox">
 	    					<label>
-	      						<input type="checkbox" id="mountain">
+	      						{{ form.history }}
 	      						History and Culture
 	    					</label>
 	  					</div>
@@ -73,30 +74,21 @@
 		  		</li>
 
         		<li class="list-group-item">
-        		  		<div class="input-group">
-        	      			<div class="checkbox">
-            					<label>
-              						<input type="checkbox" id="mountain">
-              						Food
-            					</label>
-          					</div>
-          				</div>
+    		  		<div class="input-group">
+    	      			<div class="checkbox">
+        					<label>
+          						{{ form.food }}
+          						Food
+        					</label>
+      					</div>
+      				</div>
         	  	</li>
-			    <li class="list-group-item">
-			  		<div class="input-group">
-		      			<div class="checkbox">
-	    					<label>
-	      						<input type="checkbox" id="mountain">
-	      						Food
-	    					</label>
-	  					</div>
-	  				</div>
-		  		</li>
             {% endif %}
 		  	</div>
   		</div>
 	</div>
-
+        <button>SUBMIT</button>
+    </form>
 </body>
 
 	<script src="{{ STATIC_URL }}jquery/jquery-1.11.2.min.js"></script>
