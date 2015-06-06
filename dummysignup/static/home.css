@@ -1,1 +1,25 @@
-// code here
+.title {
+    text-align: center;
+    margin-top: 200px;
+    font-size: 50px;
+}
+
+.desc {
+    text-align: center;
+    font-size: 18px;
+    font-style: italic;
+}
+
+.login {
+    display: block;
+    margin: 0 auto;
+}
+
+.no-padding{
+	padding: 0px;
+}
+
+.no-top-bottom-padding{
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
