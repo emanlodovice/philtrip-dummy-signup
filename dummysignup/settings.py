@@ -38,6 +38,26 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'dummysignup',
+    'social.apps.django_app.default',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,3 +102,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# facebook auth
+SOCIAL_AUTH_FACEBOOK_KEY = '1440403499613425'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'fd7f2f5c576a9282481f892c8a46c3f6'
+
+# google auth
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '381524227440-kp7vgmgj06j93j8ofk547lk6espo3k7q.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'MlcHupsVeR6czxp9W0bA28Gv'

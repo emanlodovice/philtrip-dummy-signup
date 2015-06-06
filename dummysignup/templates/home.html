@@ -4,6 +4,16 @@
     <title>PhilTrip</title>
 </head>
 <body>
-    Sample
+    {% if not user.is_authenticated %}
+        <h1>PhilTrip</h1>
+        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><img src="{{ STATIC_URL }}img/FBloginbutton.png" width="500px;"></a>
+    {% else %}
+        <li>
+           <a>Hello {{ user.get_full_name|default:user.username }}!</a>
+        </li>
+        <li>
+           <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+        </li>
+    {% endif %}
 </body>
 </html>
