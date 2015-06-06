@@ -2,11 +2,79 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap/css/bootstrap.css"/>	
-
+	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}home.css"/>	
     <title>PhilTrip</title>
 </head>
-<body>
-    Sample
+<body class="container">
+    
+
+	<div class="panel panel-primary col-lg-6 no-padding">
+  		<div class="panel-heading">
+    	<h3 class="panel-title">What do you want in a trip / What do you usually do on trips?</h3>
+  	</div>
+  	
+  	<div class="panel-body">
+    	<div class="list-group">  
+	  		<li class="list-group-item">
+		  		<div class="input-group">
+	      			<div class="checkbox">
+    					<label>
+      						<input type="checkbox" id="mountain">
+      						Beach
+    					</label>
+  					</div>
+  				</div>
+	  		</li>
+
+			<li class="list-group-item">
+		  		<div class="input-group">
+	      			<div class="checkbox">
+    					<label>
+      						<input type="checkbox" id="mountain">
+      						Nature/Ecoparks
+    					</label>
+  					</div>
+  				</div>
+	  		</li>
+
+			<li class="list-group-item">
+		  		<div class="input-group">
+	      			<div class="checkbox">
+    					<label>
+      						<input type="checkbox" id="mountain">
+      						Shopping
+    					</label>
+  					</div>
+  				</div>
+	  		</li>
+
+		</div>
+
+		<li class="list-group-item">
+		  		<div class="input-group">
+	      			<div class="checkbox">
+    					<label>
+      						<input type="checkbox" id="mountain">
+      						History and Culture
+    					</label>
+  					</div>
+  				</div>
+	  		</li>
+
+		<li class="list-group-item">
+		  		<div class="input-group">
+	      			<div class="checkbox">
+    					<label>
+      						<input type="checkbox" id="mountain">
+      						Food
+    					</label>
+  					</div>
+  				</div>
+	  		</li>
+  	</div>
+	</div>
+
+
 </body>
 
 	<script src="{{ STATIC_URL }}jquery/jquery-1.11.2.min.js"></script>

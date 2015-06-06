@@ -1,1 +1,8 @@
-// code here
+.no-padding{
+	padding: 0px;
+}
+
+.no-top-bottom-padding{
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
