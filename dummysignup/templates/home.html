@@ -17,100 +17,107 @@
         </div>
     {% else %}
 
-    <div class="row">
-    	<div class="col-lg-offset-0">
-        <nav class="navbar navbar-inverse container">
-  		    <div class="container-fluid">
-    	        <div class="navbar-header">
-      		        <a class="navbar-brand">PhilTrip</a>
-    	        </div>
-    	        <p class="navbar-text navbar-right">Hello, {{ user.get_full_name|default:user.username }}! <a class="btn btn-primary" href="{% url 'auth:logout' %}?next={{ request.path }}" role="button">Logout</a></p>
-  		    </div>
-	    </nav>
-	    </div>
-    <div>
-
-    <form method="post">
-    <div class="container-fluid">
-    <div class="row">
-    <div class="col-lg-offset-3">
-    <div class="panel panel-primary col-lg-8  no-padding">
-        <div class="panel-heading">
-        <h3 class="panel-title">What do you want in a trip / What do you usually do on trips?</h3>
-    </div>
-    
-        <div class="panel-body">
-            <div class="list-group">  
-                <li class="list-group-item">
-                    <div class="input-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="beach">
-                                Beach
-                            </label>
+        <div class="row">
+        	<div class="col-lg-offset-0">
+            <nav class="navbar navbar-inverse container">
+      		    <div class="container-fluid">
+        	        <div class="navbar-header">
+          		        <a class="navbar-brand">PhilTrip</a>
+        	        </div>
+        	        <p class="navbar-text navbar-right">Hello, {{ user.get_full_name|default:user.username }}! <a class="btn btn-primary" href="{% url 'auth:logout' %}?next={{ request.path }}" role="button">Logout</a></p>
+      		    </div>
+    	    </nav>
+    	    </div>
+        <div>
+        {% if not msg %}
+        <form method="post">
+        <div class="container-fluid">
+        {% csrf_token %}
+        <div class="row">
+        <div class="col-lg-offset-3">
+        <div class="panel panel-primary col-lg-8  no-padding">
+            <div class="panel-heading">
+            <h3 class="panel-title">What do you want in a trip / What do you usually do on trips?</h3>
+        </div>
+        
+            <div class="panel-body">
+                <div class="list-group">  
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.beach }}
+                                    Beach
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
 
-                <li class="list-group-item">
-                    <div class="input-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="nature-ecoparks">
-                                Nature/Ecoparks
-                            </label>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.nature }}
+                                    Nature/Ecoparks
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
 
-                <li class="list-group-item">
-                    <div class="input-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="shopping">
-                                Shopping
-                            </label>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.shopping }}
+                                    Shopping
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
 
-			
+    			
 
-                <li class="list-group-item">
-                    <div class="input-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="history-culture">
-                                History and Culture
-                            </label>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.history }}
+                                    History and Culture
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
 
-                <li class="list-group-item">
-                    <div class="input-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="food">
-                                Food
-                            </label>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.food }}
+                                    Food
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
+                    
                 
-            
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    <div class="row">
-        <div class="text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-    </div>
-    </div>
-    </form>
+
+        </div>
+        </div>
+        <div class="row">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        </form>
+    {% else %}
+    
+        <h3>{{ msg }}</h3>
+    {%endif%}
+
     {% endif %}
 </body>
 
