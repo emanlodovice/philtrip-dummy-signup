@@ -10,9 +10,10 @@ class Home(generic.TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(Home, self).get_context_data(*args, **kwargs)
-        profile = UserProfile.objects.get_or_create(user=self.request.user)[0]
+        if self.request.user.is_authenticated():
+            profile = UserProfile.objects.get_or_create(user=self.request.user)[0]
+            context['form'] = ProfileForm(instance=profile)
         context['request'] = self.request
-        context['form'] = ProfileForm(instance=profile)
         return context
 
     def post(self, request):

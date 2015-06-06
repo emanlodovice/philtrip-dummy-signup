@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap/css/bootstrap.css"/>	
-	<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}home.css"/>	
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}bootstrap/css/bootstrap.css"/>	
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}home.css"/>	
     <title>PhilTrip</title>
 </head>
     
@@ -17,80 +17,105 @@
         </div>
     {% else %}
 
-    <p>Hello {{ user.get_full_name|default:user.username }}! <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a></p>
-    <form method="POST">
-    {% csrf_token %}
-	<div class="panel panel-primary col-lg-6 no-padding">
-  		<div class="panel-heading">
-    	<h3 class="panel-title">What do you want in a trip / What do you usually do on trips?</h3>
-  	</div>
-  	
-  		<div class="panel-body">
-	    	<div class="list-group">  
-		  		<li class="list-group-item">
-			  		<div class="input-group">
-		      			<div class="checkbox">
-	    					<label>
-	      						{{ form.beach }}
-	      						Beach
-	    					</label>
-	  					</div>
-	  				</div>
-		  		</li>
+        <div class="row">
+        	<div class="col-lg-offset-0">
+            <nav class="navbar navbar-inverse container">
+      		    <div class="container-fluid">
+        	        <div class="navbar-header">
+          		        <a class="navbar-brand">PhilTrip</a>
+        	        </div>
+        	        <p class="navbar-text navbar-right">Hello, {{ user.get_full_name|default:user.username }}! <a class="btn btn-primary" href="{% url 'auth:logout' %}?next={{ request.path }}" role="button">Logout</a></p>
+      		    </div>
+    	    </nav>
+    	    </div>
+        <div>
+        {% if not msg %}
+        <form method="post">
+        {% csrf_token %}
+        <div class="row">
+        <div class="col-lg-offset-3">
+        <div class="panel panel-primary col-lg-8  no-padding">
+            <div class="panel-heading">
+            <h3 class="panel-title">What do you want in a trip / What do you usually do on trips?</h3>
+        </div>
+        
+            <div class="panel-body">
+                <div class="list-group">  
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.beach }}
+                                    Beach
+                                </label>
+                            </div>
+                        </div>
+                    </li>
 
-				<li class="list-group-item">
-			  		<div class="input-group">
-		      			<div class="checkbox">
-	    					<label>
-	      						{{ form.nature }}
-	      						Nature/Ecoparks
-	    					</label>
-	  					</div>
-	  				</div>
-		  		</li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.nature }}
+                                    Nature/Ecoparks
+                                </label>
+                            </div>
+                        </div>
+                    </li>
 
-				<li class="list-group-item">
-			  		<div class="input-group">
-		      			<div class="checkbox">
-	    					<label>
-	      						{{ form.shopping }}
-	      						Shopping
-	    					</label>
-	  					</div>
-	  				</div>
-		  		</li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.shopping }}
+                                    Shopping
+                                </label>
+                            </div>
+                        </div>
+                    </li>
 
-			
+    			
 
-			    <li class="list-group-item">
-			  		<div class="input-group">
-		      			<div class="checkbox">
-	    					<label>
-	      						{{ form.history }}
-	      						History and Culture
-	    					</label>
-	  					</div>
-	  				</div>
-		  		</li>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.history }}
+                                    History and Culture
+                                </label>
+                            </div>
+                        </div>
+                    </li>
 
-        		<li class="list-group-item">
-    		  		<div class="input-group">
-    	      			<div class="checkbox">
-        					<label>
-          						{{ form.food }}
-          						Food
-        					</label>
-      					</div>
-      				</div>
-        	  	</li>
-            {% endif %}
-		  	</div>
-  		</div>
-	</div>
-        <button>SUBMIT</button>
-    </form>
+                    <li class="list-group-item">
+                        <div class="input-group">
+                            <div class="checkbox">
+                                <label>
+                                    {{ form.food }}
+                                    Food
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                    
+                
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="row">
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        </form>
+    {% else %}
+        {{ msg }}
+    {%endif%}
+    {% endif %}
 </body>
 
-	<script src="{{ STATIC_URL }}jquery/jquery-1.11.2.min.js"></script>
-	<script src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
+    <script src="{{ STATIC_URL }}jquery/jquery-1.11.2.min.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
 </html>

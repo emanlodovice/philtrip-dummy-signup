@@ -9,8 +9,8 @@ from dummysignup.models import UserProfile
 
 def login(backend, uid, user, details, is_new, response, *args, **kwargs):
     print response
-    # if not is_new:
-    #     return
+    if not is_new:
+        return
     create_new_user(user, details)
     create_profile(user, response)
 
